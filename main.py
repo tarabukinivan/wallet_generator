@@ -10,7 +10,7 @@ def generate_ethereum_wallets(count):
         mnemonic = mnemonic_generator.FromWordsNumber(words_num=12)
         seed = Bip39SeedGenerator(mnemonic).Generate()
         bip_obj = Bip44.FromSeed(seed, Bip44Coins.ETHEREUM)
-        print(mnemonic)
+       
         private_key = bip_obj.Purpose().Coin().Account(0).Change(Bip44Changes.CHAIN_EXT).AddressIndex(0).PrivateKey().Raw().ToBytes()
         account = Account.from_key(private_key)
 
